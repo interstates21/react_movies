@@ -1,14 +1,15 @@
 import React from "react";
 import {TextField} from "@material-ui/core";
+import PropTypes from "prop-types";
 
-const SearchBox = (props) => {
+const SearchBox = ({value, setSearchValues}) => {
     return (
         <div>
             <TextField
-                value={props.value}
+                value={value}
                 variant="outlined"
                 fullWidth
-                onChange={(event) => props.setSearchValues(event.target.value)}
+                onChange={(event) => setSearchValues(event.target.value)}
                 placeholder="Type to search..."
             ></TextField>
         </div>
@@ -16,3 +17,8 @@ const SearchBox = (props) => {
 };
 
 export default SearchBox;
+
+SearchBox.propTypes = {
+    value: PropTypes.string,
+    setSearchValues: PropTypes.func,
+};

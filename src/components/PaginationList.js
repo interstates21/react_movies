@@ -1,5 +1,6 @@
 import React from "react";
 import {Button} from "@material-ui/core";
+import PropTypes from "prop-types";
 
 const PaginationList = ({
     moviesPerPage,
@@ -27,3 +28,10 @@ const PaginationList = ({
 };
 
 export default PaginationList;
+
+PaginationList.propTypes = {
+    moviesPerPage: PropTypes.number.isRequired,
+    totalMovies: PropTypes.number,
+    paginate: PropTypes.func,
+    currentPage: PropTypes.number,
+};

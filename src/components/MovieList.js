@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -62,3 +63,9 @@ const MovieList = ({movies, loading, genres}) => {
 };
 
 export default MovieList;
+
+MovieList.propTypes = {
+    movies: PropTypes.array,
+    loading: PropTypes.bool,
+    genres: PropTypes.array,
+};

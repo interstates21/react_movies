@@ -79,10 +79,6 @@ const App = () => {
             movies.filter((movie) => {
                 return genreIds.every((item) => movie.genre_ids.includes(item));
             })
-            // .sort(
-            //     (a, b) =>
-            //         new Date(b.release_date) - new Date(a.release_date)
-            // )
         );
     };
 

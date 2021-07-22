@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Chip from "@material-ui/core/Chip";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -37,7 +38,6 @@ const Genres = ({genres, showGenres}) => {
 
     const handleChange = (event) => {
         setSelectedGenre(event.target.value);
-        console.log(event.target.value);
         showGenres(event.target.value);
     };
 
@@ -77,3 +77,8 @@ const Genres = ({genres, showGenres}) => {
 };
 
 export default Genres;
+
+Genres.propTypes = {
+    genres: PropTypes.array.isRequired,
+    showGenres: PropTypes.func,
+};

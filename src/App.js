@@ -102,6 +102,7 @@ const App = () => {
                     moviesPerPage={moviesPerPage}
                     totalMovies={movies.length}
                     paginate={paginate}
+                    currentPage={currentPage}
                 />
                 <Button
                     onClick={

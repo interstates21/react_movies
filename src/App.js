@@ -4,6 +4,7 @@ import React, {useState, useEffect} from "react";
 import MovieList from "./components/MovieList";
 import MovieListHead from "./components/MovieListHead";
 import SearchBox from "./components/SearchBox";
+import Genres from "./components/Genres";
 import PaginationList from "./components/PaginationList";
 import {Grid, Button} from "@material-ui/core";
 
@@ -66,7 +67,27 @@ const App = () => {
     const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
 
     // Change page
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    // show genres
+
+    const showGenres = (genres) => {
+        let genreIds = Array.from(genres, (genre) => genre.id);
+
+        setMovies(
+            movies
+                .filter((movie) => {
+                    return genreIds.every((item) =>
+                        movie.genre_ids.includes(item)
+                    );
+                })
+                .sort(
+                    (a, b) =>
+                        new Date(b.release_date) - new Date(a.release_date)
+                )
+        );
+    };
 
     return (
         <Grid
@@ -82,6 +103,7 @@ const App = () => {
                     searchValue={searchValue}
                     setSearchValues={setSearchValues}
                 />
+                <Genres genres={genres} showGenres={showGenres} />
             </Grid>
             <Grid item>
                 <MovieList

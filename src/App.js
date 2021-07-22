@@ -31,12 +31,12 @@ const App = () => {
                     let responseJson = await response.json();
                     setMovies((old) => [...old, ...responseJson.results]);
                 }
-                // setMovies(
-                //     movies.sort(
-                //         (a, b) =>
-                //             new Date(b.release_date) - new Date(a.release_date)
-                //     )
-                // );
+                setMovies(
+                    movies.sort(
+                        (a, b) =>
+                            new Date(b.release_date) - new Date(a.release_date)
+                    )
+                );
             }
             setLoading(false);
         };
@@ -76,16 +76,13 @@ const App = () => {
         let genreIds = Array.from(genres, (genre) => genre.id);
 
         setMovies(
-            movies
-                .filter((movie) => {
-                    return genreIds.every((item) =>
-                        movie.genre_ids.includes(item)
-                    );
-                })
-                .sort(
-                    (a, b) =>
-                        new Date(b.release_date) - new Date(a.release_date)
-                )
+            movies.filter((movie) => {
+                return genreIds.every((item) => movie.genre_ids.includes(item));
+            })
+            // .sort(
+            //     (a, b) =>
+            //         new Date(b.release_date) - new Date(a.release_date)
+            // )
         );
     };
 
